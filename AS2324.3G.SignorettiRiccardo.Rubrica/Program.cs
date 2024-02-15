@@ -11,7 +11,10 @@ class Program
 
     static void Main(string[] args)
     {
-
+        InserimentoRubrica();//qui andiamo ad inserire il nome cognome e nickname
+        VisualizzaRubrica();//qui abbiamo una visualizzazione della rubrica
+        RicercaPerNickname();//qui andiamo a fare una ricerca con il nickname
+        Console.ReadLine();
     }
 
     static void InserimentoRubrica()
@@ -45,6 +48,30 @@ class Program
         for (int i = 0; i < numContatti; i++)
         {
             Console.WriteLine($"Nome: {nomi[i]} | Cognome: {cognomi[i]} | Nickname: {nickname[i]}");
+        }
+    }
+
+    static void RicercaPerNickname()
+    {
+        Console.Write("\nInserisci il nickname da cercare: ");
+        string nickDaCercare = Console.ReadLine();
+
+        bool trovato = false;
+        Console.WriteLine("\nRisultati della ricerca:");
+
+        for (int i = 0; i < numContatti; i++)
+        {
+            if (nickname[i] == nickDaCercare)
+            {
+                Console.WriteLine($"Nome: {nomi[i]} | Cognome: {cognomi[i]} | Nickname: {nickname[i]}");
+                trovato = true;
+            }
+        }
+
+        if (!trovato)
+        {
+            Console.WriteLine("Nessun nominativo trovato con il nickname inserito.");
+
         }
     }
 }

@@ -16,6 +16,7 @@ class Program
         RicercaPerNickname();//qui andiamo a fare una ricerca con il nickname
         RicercaPerNomeCaseInsensitive();
         RicercaCognomiPerIniziale("A");
+        RicercaCognomiContenenti("son");
         Console.ReadLine();
     }
 
@@ -115,6 +116,25 @@ class Program
         if (!trovato)
         {
             Console.WriteLine($"Nessun cognome trovato che inizia con '{iniziale}'.");
+        }
+    }
+    static void RicercaCognomiContenenti(string contenuto)
+    {
+        Console.WriteLine($"\nRicerca dei cognomi che contengono '{contenuto}':");
+
+        bool trovato = false;
+        for (int i = 0; i < numContatti; i++)
+        {
+            if (cognomi[i].ToLower().Contains(contenuto.ToLower()))
+            {
+                Console.WriteLine($"Nome-Cognome-Nickname:  {nomi[i]}-{cognomi[i]}-{nickname[i]}");
+                trovato = true;
+            }
+        }
+
+        if (!trovato)
+        {
+            Console.WriteLine($"Nessun cognome trovato che contiene '{contenuto}'.");
         }
     }
 }

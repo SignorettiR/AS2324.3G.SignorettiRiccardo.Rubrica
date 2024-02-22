@@ -47,7 +47,7 @@ class Program
 
         for (int i = 0; i < numContatti; i++)
         {
-            Console.WriteLine($"Nome: {nomi[i]} | Cognome: {cognomi[i]} | Nickname: {nickname[i]}");
+            Console.WriteLine($"Nome-Cognome-Nickname:  {nomi[i]}-{cognomi[i]}-{nickname[i]}");
         }
     }
 
@@ -63,7 +63,7 @@ class Program
         {
             if (nickname[i] == nickDaCercare)
             {
-                Console.WriteLine($"Nome: {nomi[i]} | Cognome: {cognomi[i]} | Nickname: {nickname[i]}");
+                Console.WriteLine($"Nome-Cognome-Nickname:  {nomi[i]}-{cognomi[i]}-{nickname[i]}");
                 trovato = true;
             }
         }

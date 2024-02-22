@@ -14,6 +14,8 @@ class Program
         InserimentoRubrica();//qui andiamo ad inserire il nome cognome e nickname
         VisualizzaRubrica();//qui abbiamo una visualizzazione della rubrica
         RicercaPerNickname();//qui andiamo a fare una ricerca con il nickname
+        RicercaPerNomeCaseInsensitive();
+        RicercaCognomiPerIniziale("A");
         Console.ReadLine();
     }
 
@@ -72,6 +74,47 @@ class Program
         {
             Console.WriteLine("Nessun nominativo trovato con il nickname inserito.");
 
+        }
+    }
+    static void RicercaPerNomeCaseInsensitive()
+    {
+        Console.Write("\nInserisci il nome da cercare (case insensitive): ");
+        string nomeDaCercare = Console.ReadLine().ToLower();
+
+        bool trovato = false;
+        Console.WriteLine("\nRisultati della ricerca:");
+
+        for (int i = 0; i < numContatti; i++)
+        {
+            if (nomi[i].ToLower() == nomeDaCercare)
+            {
+                Console.WriteLine($"Nome-Cognome-Nickname:  {nomi[i]}-{cognomi[i]}-{nickname[i]}");
+                trovato = true;
+            }
+        }
+
+        if (!trovato)
+        {
+            Console.WriteLine("Nessun nominativo trovato con il nome inserito (case insensitive).");
+        }
+    }
+    static void RicercaCognomiPerIniziale(string iniziale)
+    {
+        Console.WriteLine($"\nRicerca dei cognomi che iniziano con '{iniziale}':");
+
+        bool trovato = false;
+        for (int i = 0; i < numContatti; i++)
+        {
+            if (cognomi[i].StartsWith(iniziale, StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine($"Nome-Cognome-Nickname:  {nomi[i]}-{cognomi[i]}-{nickname[i]}");
+                trovato = true;
+            }
+        }
+
+        if (!trovato)
+        {
+            Console.WriteLine($"Nessun cognome trovato che inizia con '{iniziale}'.");
         }
     }
 }
